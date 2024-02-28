@@ -27,8 +27,8 @@ listContainer.addEventListener("click", removeTask, false) //evento cuando tocam
 function removeTask(e){ //=> si tocamos el texto, nos habilita la class cheched, que habiamos armado para tachar el texto
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
-        setTimeout(function(){e.target.parentElement.remove()
-        saveData()}, 2000)
+        // setTimeout(function(){e.target.parentElement.remove()
+        // saveData()}, 2000)
         saveData()
     }
     else if(e.target.tagName === "SPAN"){ //=> si tocamos la cruz, simplemente eliminamos el elemento
