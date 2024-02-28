@@ -10,6 +10,22 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="card">
+                <div class="search">
+                    <input type="text" placeholder="Enter city name" spellcheck="false">
+                    <button>Search</button>
+                </div>
+                
+                <div class="weather">
+                    <img src="./img/rain.png" class="weather-icon">
+                    <h1 class="temp">22°c</h1>
+                    <h2 class="city">Buenos Aires</h2>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="container">
         <div class="tasks">
             <h2>Tasks</h2>
@@ -26,5 +42,6 @@
         </div>
     </div>
     <script src="/Scripts/dom.js"></script>
+    <script src="js/api.js"></script>
 </body>
 </html>
