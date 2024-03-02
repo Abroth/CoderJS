@@ -19,7 +19,8 @@ function addTask(){
     }
 
     inputBox.value = ''; //=> resetamos el valor del input
-    saveData()
+    // saveData()
+    guardarDatosEnLocalStorage()
 }
 
 listContainer.addEventListener("click", removeTask, false) //evento cuando tocamos el texto o la cruz
@@ -27,22 +28,42 @@ listContainer.addEventListener("click", removeTask, false) //evento cuando tocam
 function removeTask(e){ //=> si tocamos el texto, nos habilita la class cheched, que habiamos armado para tachar el texto
     if(e.target.tagName === "LI"){
         e.target.classList.toggle("checked");
-        // setTimeout(function(){e.target.parentElement.remove()
-        // saveData()}, 2000)
-        saveData()
+
+        // saveData()
+        guardarDatosEnLocalStorage()
     }
     else if(e.target.tagName === "SPAN"){ //=> si tocamos la cruz, simplemente eliminamos el elemento
         e.target.parentElement.remove();
-        saveData()
+
+        // saveData()
+        guardarDatosEnLocalStorage()
     }
 }
 
-function saveData(){ //salvamos los datos, y lo ejecutamos cada vez que modificamos el list containter
-    localStorage.setItem("data", listContainer.innerHTML)
-}
+// function saveData(){ //salvamos los datos, y lo ejecutamos cada vez que modificamos el list containter
+//     localStorage.setItem("data", listContainer.innerHTML)
+// }
 
-function showTask(){ //traemos lo guardado en el list container
-    listContainer.innerHTML = localStorage.getItem("data");
-}
+// function showTask(){ //traemos lo guardado en el list container
+//     listContainer.innerHTML = localStorage.getItem("data");
+// }
 
-showTask();
+
+//usamos el json para guardar los datos
+function guardarDatosEnLocalStorage() {
+    var datosJson = JSON.stringify(listContainer.innerHTML);
+    localStorage.setItem('misDatos', datosJson);
+  }
+  
+  function cargarDatosDesdeLocalStorage() {
+    var datosJson = localStorage.getItem('misDatos');
+    var datos = JSON.parse(datosJson);
+
+    listContainer.innerHTML = datos;
+  }
+
+  cargarDatosDesdeLocalStorage();
+
+  
+
+  
